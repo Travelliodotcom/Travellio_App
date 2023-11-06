@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
+class BottomNavigationController extends GetxController {
   var selectedIndex = 0.obs;
 
-  void changeIndex(int index) {
+  void changePage(int index) {
     selectedIndex.value = index;
   }
 }

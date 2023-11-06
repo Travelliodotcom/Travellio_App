@@ -12,10 +12,6 @@ void main() async {
   runApp(StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
-        print('User: ${FirebaseAuth.instance.currentUser}');
-
-        print('Snapshot data: ${snapshot.data}');
-
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const MaterialApp(
               home: Scaffold(
