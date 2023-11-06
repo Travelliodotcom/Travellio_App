@@ -9,7 +9,7 @@ import 'package:travellio/app/utils/buildLayout/buildLayout_controller.dart';
 class BuildLayout extends GetView<BuildLayoutController> {
   final List<Widget> pageList = [
     HomeView(),
-    SavedTrips(),
+    const SavedTrips(),
     HomeView(),
     HomeView(),
     HomeView(),
@@ -26,7 +26,8 @@ class BuildLayout extends GetView<BuildLayoutController> {
         bottomNavigationBar: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: DotNavigationBar(
-            itemPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            itemPadding:
+                const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             items: [
               DotNavigationBarItem(
                 icon: Icon(
