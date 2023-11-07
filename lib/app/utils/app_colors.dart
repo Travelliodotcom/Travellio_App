@@ -7,4 +7,5 @@ class AppColor {
   static Color pageColor = const Color(0xFFF7F7F7);
   static Color locIconColor = const Color(0xFF3D3D3D);
   static Color notifIconColor = const Color(0xFF1E1E1E);
+  static Color titleBlack = const Color.fromARGB(255, 0, 0, 0);
 }
