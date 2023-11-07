@@ -4,7 +4,7 @@ import 'package:travellio/app/utils/app_colors.dart';
 import 'package:travellio/app/utils/buildLayout/buildLayout_controller.dart';
 import 'home_controller.dart';
 
-class HomeView extends GetView<BuildLayoutController> {
+class HomeView extends StatelessWidget {
   final HomeController homeController = Get.put(HomeController());
 
   HomeView({super.key});

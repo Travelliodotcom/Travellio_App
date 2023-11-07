@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
@@ -9,6 +11,9 @@ class HomeController extends GetxController {
   RxString location = "Fetching Location..".obs;
   RxString country_obs = "".obs;
 
+  final Duration updateInterval = const Duration(seconds: 20);
+  late Timer locationUpdateTimer;
+
   void changeIndex(int index) {
     selectedIndex.value = index;
   }
@@ -16,6 +21,9 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    locationUpdateTimer = Timer.periodic(updateInterval, (_) {
+      fetchLocation();
+    });
     fetchLocation();
   }
 

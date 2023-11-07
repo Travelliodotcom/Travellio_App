@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:travellio/app/screens/login/login_view.dart';
 import 'package:travellio/app/screens/sign_up/sign_up_binding.dart';
 import 'package:travellio/app/utils/buildLayout/buildLayout_view.dart';
 import '../screens/home/home_binding.dart';
@@ -23,7 +24,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => BuildLayout(),
+      page: () => const LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
