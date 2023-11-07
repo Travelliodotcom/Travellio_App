@@ -1,16 +1,44 @@
 # travellio
 
-A new Flutter project.
+Following is the app hierarchy (Update as you work):
 
-## Getting Started
+```mermaid
+graph TD;
 
-This project is a starting point for a Flutter application.
+  lib --> app;
+  lib --> main.dart;
+  lib --> firebase_options.dart;
 
-A few resources to get you started if this is your first Flutter project:
+  app --> controller;
+  app --> widgets;
+  app --> models;
+  app --> routes;
+  app --> utils;
+  app --> screens;
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  routes --> app_pages.dart;
+  routes --> app_routes.dart;
+  routes --> nav_bar_page_switch.dart;
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  screens --> home;
+  screens --> login;
+  screens --> profile;
+  screens --> saved_trips;
+  screens --> sign_up;
+
+  utils --> buildLayout;
+  utils --> app_colors.dart;
+
+  widgets --> menu_tile.dart;
+  widgets --> tile.dart;
+```
+
+Screens Folder Hierarchy/Template (Stick to this):
+
+```mermaid
+graph TD;
+
+Screens-->folder_name-->name_binding;
+folder_name-->name_controller;
+folder_name-->name_view;
+```
