@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:get/get.dart';
 import 'package:travellio/app/screens/home/dataModels/data_models.dart';
 import 'package:travellio/app/utils/app_colors.dart';
@@ -201,6 +202,7 @@ class HomeView extends StatelessWidget {
               ),
               Container(
                 height: screenHeight * 0.20,
+                // color: Colors.orange,
                 width: screenWidth,
                 child: buildGroupTrips(),
               ),
@@ -390,10 +392,90 @@ Widget buildTrips() {
 }
 
 Widget buildGroupTrips() {
-  return ListView.builder(itemBuilder: (BuildContext context, index) {
-    return Container(
-      color: Colors.orange,
-    );
+  return ListView.builder(scrollDirection: Axis.horizontal, itemCount: 5, itemBuilder: (BuildContext context, index) {
+    return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2),
+          child: TextButton(
+            style: ButtonStyle(overlayColor: MaterialStateProperty.all(Colors.transparent),),
+              onPressed: () {},
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 160,
+                        height: 140,
+                        decoration: BoxDecoration(
+                            // color: Colors.red,
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                  imageURL[index],
+                                ),
+                                fit: BoxFit.fill),
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 2,
+                                  spreadRadius: 0.5,
+                                  offset: Offset.fromDirection(70, 5),
+                                  color: Color.fromARGB(117, 0, 0, 0))
+                            ]),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: 160,
+                        height: 100,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  locationNames.elementAt(index),
+                                  style: TextStyle(
+                                      color: AppColor.titleBlack,
+                                      letterSpacing: -0.3,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.pin_drop_rounded,
+                                  color: AppColor.accentGrey,
+                                ),
+                                Text(
+                                  "Idaho",
+                                  style: TextStyle(
+                                      color: AppColor.accentGrey, fontSize: 12),
+                                ),
+                              ],
+                            ),
+                            FAProgressBar(
+                              currentValue: 80,
+                              displayText: '%',
+                              progressColor: AppColor.weirdBlue,
+                              backgroundColor: AppColor.progressBarBackground,
+                              size: 15,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+        );
   });
 }
 // Widget tripCard() {
