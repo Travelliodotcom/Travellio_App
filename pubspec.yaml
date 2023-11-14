@@ -37,6 +37,13 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
-    # - assets/fonts/
     - assets/misc/
     - assets/design/
+
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-Regular.ttf 
+        - asset: assets/fonts/Raleway-Bold.ttf 
+        - asset: assets/fonts/Inter-Regular.ttf 
+        - asset: assets/fonts/Inter-Bold.ttf 

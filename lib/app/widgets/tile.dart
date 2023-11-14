@@ -18,12 +18,18 @@ class tile extends StatelessWidget {
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 2,
+            )
+          ]
         ),
         child: Center(
             child: Image.asset(
           imagePath,
-          width: 30,
-          height: 30,
+          width: 25,
+          height: 25,
         )),
       ),
     );
