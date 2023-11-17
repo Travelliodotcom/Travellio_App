@@ -1,8 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:get/get.dart';
-import 'package:travellio/app/screens/host_trip/host_trip_binding.dart';
-import 'package:travellio/app/screens/host_trip/host_trip_view.dart';
 import 'package:travellio/app/screens/login/login_view.dart';
 import 'package:travellio/app/screens/sign_up/sign_up_binding.dart';
 import 'package:travellio/app/utils/buildLayout/buildLayout_view.dart';
@@ -38,11 +36,6 @@ class AppPages {
       name: _Paths.SAVEDTRIPS,
       page: () => BuildLayout(),
       binding: SavedTripsBinding(),
-    ),
-    GetPage(
-      name: _Paths.HOST,
-      page: () => HostTripView(),
-      binding: hostTripBinding(),
     ),
   ];
 }

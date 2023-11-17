@@ -3,6 +3,7 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'package:get/get.dart';
 import 'package:travellio/app/screens/home/dataModels/data_models.dart';
 import 'package:travellio/app/utils/app_colors.dart';
+import 'package:travellio/app/utils/buildLayout/buildLayout_controller.dart';
 import 'home_controller.dart';
 
 int itemCounter = 10;
