@@ -3,7 +3,6 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'package:get/get.dart';
 import 'package:travellio/app/screens/home/dataModels/data_models.dart';
 import 'package:travellio/app/utils/app_colors.dart';
-import 'package:travellio/app/utils/buildLayout/buildLayout_controller.dart';
 import 'home_controller.dart';
 
 int itemCounter = 10;
@@ -76,19 +75,20 @@ class HomeView extends StatelessWidget {
                         right: screenWidth * 0.05, top: screenHeight * 0.02),
                     child: IconButton(
                         onPressed: () => {
-                              showDialog(
-                                  context: (context),
-                                  builder: ((BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text("PUT NOTIFICATION SCREEN"),
-                                      actions: [
-                                        TextButton(
-                                            onPressed:
-                                                Navigator.of(context).pop,
-                                            child: Text("Okay"))
-                                      ],
-                                    );
-                                  }))
+                              // showDialog(
+                              //     context: (context),
+                              //     builder: ((BuildContext context) {
+                              //       return AlertDialog(
+                              //         title: Text("PUT NOTIFICATION SCREEN"),
+                              //         actions: [
+                              //           TextButton(
+                              //               onPressed:
+                              //                   Navigator.of(context).pop,
+                              //               child: Text("Okay"))
+                              //         ],
+                              //       );
+                              //     }))
+                              Get.toNamed('/host'),
                             },
                         icon: Icon(
                           Icons.notifications,
@@ -269,7 +269,9 @@ Widget buildTrips() {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 2),
           child: TextButton(
-            style: ButtonStyle(overlayColor: MaterialStateProperty.all(Colors.transparent),),
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+              ),
               onPressed: () {},
               child: Container(
                 decoration: BoxDecoration(
@@ -392,11 +394,16 @@ Widget buildTrips() {
 }
 
 Widget buildGroupTrips() {
-  return ListView.builder(scrollDirection: Axis.horizontal, itemCount: 5, itemBuilder: (BuildContext context, index) {
-    return Padding(
+  return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: 5,
+      itemBuilder: (BuildContext context, index) {
+        return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 2),
           child: TextButton(
-            style: ButtonStyle(overlayColor: MaterialStateProperty.all(Colors.transparent),),
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+              ),
               onPressed: () {},
               child: Container(
                 decoration: BoxDecoration(
@@ -476,7 +483,7 @@ Widget buildGroupTrips() {
                 ),
               )),
         );
-  });
+      });
 }
 // Widget tripCard() {
 //   return Container(
