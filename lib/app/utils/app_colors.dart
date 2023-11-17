@@ -11,4 +11,5 @@ class AppColor {
   static Color titleBlack = const Color.fromARGB(255, 0, 0, 0);
   static Color goldenStar = const Color.fromARGB(255, 255, 192, 97);
   static Color randomGrey = const Color(0xFFB3B3B3);
+  static Color hostTripText = const Color(0xFF4F4F4F);
 }

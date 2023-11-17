@@ -4,6 +4,7 @@ import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travellio/app/screens/home/home_view.dart';
+import 'package:travellio/app/screens/host_trip/host_trip_view.dart';
 import 'package:travellio/app/screens/profile/profile_view.dart';
 import 'package:travellio/app/screens/saved_trips/saved_trips_view.dart';
 import 'package:travellio/app/utils/app_colors.dart';
@@ -13,9 +14,9 @@ class BuildLayout extends GetView<BuildLayoutController> {
 
   final List<Widget> pageList = [
     HomeView(),
+    HostTripView(),
+    HomeView(),
     const SavedTrips(),
-    HomeView(),
-    HomeView(),
     ProfileView(),
   ];
 
