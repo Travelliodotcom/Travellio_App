@@ -1,3 +1,5 @@
+// import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:get/get.dart';
@@ -17,18 +19,21 @@ class HomeView extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      backgroundColor: AppColor.pageColor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(
-              top: screenHeight * 0.05, left: screenWidth * 0.05),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColor.pageColor,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+          backgroundColor: AppColor.weirdBlue,
+        ),
+        body: Padding(
+          padding: EdgeInsets.only(left: screenWidth * 0.03),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: Column(
@@ -37,42 +42,33 @@ class HomeView extends StatelessWidget {
                         Text(
                           "Location",
                           style: TextStyle(
-                            fontFamily: "inter",
-                            color: AppColor.accentGrey,
-                            fontSize: 18,
-                          ),
+                              fontFamily: "inter",
+                              color: AppColor.accentGrey,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(
                           height: 4,
                         ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.location_on,
-                              size: 30,
-                              color: AppColor.locIconColor,
+                        Obx(() {
+                          final locationText =
+                              '${homeController.location.value}, ${homeController.country_obs.value} ';
+                          return Text(
+                            locationText,
+                            style: const TextStyle(
+                              fontFamily: "inter",
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
                             ),
-                            Obx(() {
-                              final locationText =
-                                  '${homeController.location.value}, ${homeController.country_obs.value} ';
-                              return Text(
-                                locationText,
-                                style: const TextStyle(
-                                  fontFamily: "inter",
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                ),
-                              );
-                            }),
-                          ],
-                        ),
+                          );
+                        }),
                       ],
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        right: screenWidth * 0.05, top: screenHeight * 0.02),
+                        right: screenWidth * 0.03, top: screenHeight * 0.02),
                     child: IconButton(
                         onPressed: () => {
                               // showDialog(
@@ -91,16 +87,22 @@ class HomeView extends StatelessWidget {
                               Get.toNamed('/host'),
                             },
                         icon: Icon(
-                          Icons.notifications,
+                          Icons.calendar_month,
                           size: 25,
                           color: AppColor.notifIconColor,
                         )),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
+              Padding(
+                padding: EdgeInsets.only(right: screenWidth * 0.03),
+                child: Divider(
+                  color: AppColor.accentGrey,
+                ),
               ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
               Title(
                 color: Colors.orange,
                 child: const Align(
@@ -119,7 +121,7 @@ class HomeView extends StatelessWidget {
               Container(
                 // width: screenWidth,
                 height: screenHeight * 0.1,
-                child: buildCategories(),
+                child: buildCategories(homeController),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -145,17 +147,20 @@ class HomeView extends StatelessWidget {
                           onPressed: () {},
                           child: Text(
                             "See All",
-                            style: TextStyle(color: AppColor.accentGrey),
+                            style: TextStyle(
+                              color: AppColor.accentGrey,
+                            ),
                           )))
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 0,
               ),
               Container(
-                height: screenHeight * 0.31,
-                child: buildTrips(),
+                height: screenHeight * 0.29,
+                child: buildTrips(screenWidth),
               ),
+              Divider(color: AppColor.accentGrey,),
               SizedBox(
                 height: 10,
               ),
@@ -179,20 +184,40 @@ class HomeView extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "See All",
-                          style: TextStyle(color: AppColor.accentGrey),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 15),
+                      Container(
+                        width: 80,
+                        height: 38,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10)),
                         child: TextButton(
                           onPressed: () {},
                           child: Text(
-                            "Create One",
-                            style: TextStyle(color: AppColor.weirdBlue),
+                            "See All",
+                            style: TextStyle(
+                                color: AppColor.accentGrey, fontSize: 12),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15),
+                        child: Container(
+                          width: 80,
+                          height: 38,
+                          decoration: BoxDecoration(
+                              color: AppColor.weirdBlue,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: TextButton(
+                            onPressed: () {},
+                            // style: TextButton.styleFrom(backgroundColor: AppColor.weirdBlue),
+                            child: Text(
+                              "Create One",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 12),
+                            ),
                           ),
                         ),
                       ),
@@ -214,43 +239,48 @@ class HomeView extends StatelessWidget {
   }
 }
 
-Widget buildCategories() {
+Widget buildCategories(HomeController homeController) {
   return ListView.builder(
     scrollDirection: Axis.horizontal,
     itemCount: numberOfCategories,
     itemBuilder: (BuildContext context, index) {
       return TextButton(
-        onPressed: () {},
+        onPressed: () {
+          homeController.changeIndex(index);
+        },
         style: ButtonStyle(
           overlayColor: MaterialStateProperty.all(Colors.transparent),
           iconColor: MaterialStateProperty.all(AppColor.weirdBlue),
         ),
         child: Container(
+          width: 120,
+          height: 45,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: homeController.selectedIndex.value == index
+                ? AppColor.weirdBlue
+                : Colors.white,
             border: Border.all(
-                width: 1, style: BorderStyle.solid, color: AppColor.weirdBlue),
+                width: 1, style: BorderStyle.solid, color: Colors.transparent),
             borderRadius: BorderRadius.circular(25),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 22,
-                backgroundColor: AppColor.weirdBlue,
-                child: Icon(
-                  categoriesListIcons[categoriesList.values[index]],
-                  color: Colors.white,
-                ),
+              Icon(
+                categoriesListIcons[categoriesList.values[index]],
+                color: homeController.selectedIndex.value == index
+                    ? Colors.white
+                    : AppColor.accentGrey,
               ),
 
               // const SizedBox(width: 5,),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Text(
-                  categoriesList.values[index].name,
-                  style: TextStyle(color: AppColor.accentGrey),
+              Text(
+                categoriesList.values[index].name,
+                style: TextStyle(
+                  color: homeController.selectedIndex.value == index
+                      ? Colors.white
+                      : AppColor.accentGrey,
                 ),
               ),
             ],
@@ -261,7 +291,7 @@ Widget buildCategories() {
   );
 }
 
-Widget buildTrips() {
+Widget buildTrips(double cardWidth) {
   return ListView.builder(
       scrollDirection: Axis.horizontal,
       itemCount: 6,
@@ -281,26 +311,24 @@ Widget buildTrips() {
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 160,
-                        height: 120,
-                        decoration: BoxDecoration(
-                            // color: Colors.red,
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                  imageURL[index],
-                                ),
-                                fit: BoxFit.fill),
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 2,
-                                  spreadRadius: 0.5,
-                                  offset: Offset.fromDirection(70, 5),
-                                  color: Color.fromARGB(117, 0, 0, 0))
-                            ]),
+                    Container(
+                      width: 175,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        // color: Colors.red,
+                        image: DecorationImage(
+                            image: NetworkImage(
+                              imageURL[index],
+                            ),
+                            fit: BoxFit.fill),
+                        borderRadius: BorderRadius.circular(15),
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //       blurRadius: 2,
+                        //       spreadRadius: 0.5,
+                        //       offset: Offset.fromDirection(70, 5),
+                        //       color: Color.fromARGB(117, 0, 0, 0))
+                        // ],
                       ),
                     ),
                     Padding(
@@ -395,11 +423,11 @@ Widget buildTrips() {
 
 Widget buildGroupTrips() {
   return ListView.builder(
-      scrollDirection: Axis.horizontal,
+      scrollDirection: Axis.vertical,
       itemCount: 5,
       itemBuilder: (BuildContext context, index) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: TextButton(
               style: ButtonStyle(
                 overlayColor: MaterialStateProperty.all(Colors.transparent),
@@ -413,26 +441,24 @@ Widget buildGroupTrips() {
                 child: Row(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 160,
-                        height: 140,
-                        decoration: BoxDecoration(
-                            // color: Colors.red,
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                  imageURL[index],
-                                ),
-                                fit: BoxFit.fill),
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 2,
-                                  spreadRadius: 0.5,
-                                  offset: Offset.fromDirection(70, 5),
-                                  color: Color.fromARGB(117, 0, 0, 0))
-                            ]),
+                    Container(
+                      width: 160,
+                      height: 140,
+                      decoration: BoxDecoration(
+                        // color: Colors.red,
+                        image: DecorationImage(
+                            image: NetworkImage(
+                              imageURL[index],
+                            ),
+                            fit: BoxFit.fill),
+                        borderRadius: BorderRadius.circular(15),
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //       blurRadius: 2,
+                        //       spreadRadius: 0.5,
+                        //       offset: Offset.fromDirection(70, 5),
+                        //       color: Color.fromARGB(117, 0, 0, 0))
+                        // ],
                       ),
                     ),
                     Padding(

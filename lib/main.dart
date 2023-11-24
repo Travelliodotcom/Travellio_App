@@ -23,7 +23,7 @@ void main() async {
         return GetMaterialApp(
           title: 'Travellio',
           debugShowCheckedModeBanner: true,
-          initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
+          initialRoute: snapshot.data != null ? Routes.HOME : Routes.HOME,
           getPages: AppPages.routes,
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
@@ -32,13 +32,3 @@ void main() async {
         );
       }));
 }
-
-// void main() async{
-//   runApp(GetMaterialApp(
-//     title: "Travellio",
-//     // initialRoute: Routes.HOME,
-//     getPages: AppPages.routes,
-//     theme: ThemeData(scaffoldBackgroundColor: Colors.white, primaryColor: Colors.black),
-//     home: HomeView(),
-//   ));
-// }
