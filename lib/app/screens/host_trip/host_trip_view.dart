@@ -28,7 +28,7 @@ class hostTripView extends GetView {
           leading: IconButton(
             onPressed: () => Get.offAllNamed('/home'),
             icon: const Icon(Icons.arrow_back),
-            color: Colors.black,        
+            color: Colors.black,
           )),
       body: SingleChildScrollView(
         child: Padding(
