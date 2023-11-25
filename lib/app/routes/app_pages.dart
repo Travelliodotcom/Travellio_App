@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:travellio/app/screens/ai_generator/ai_generator_view.dart';
 import 'package:travellio/app/screens/host_trip/host_trip_view.dart';
 import 'package:travellio/app/screens/login/login_view.dart';
 import 'package:travellio/app/screens/sign_up/sign_up_binding.dart';
@@ -22,7 +23,6 @@ class AppPages {
       name: _Paths.HOME,
       page: () => BuildLayout(),
       binding: HomeBinding(),
-      transition: Transition.fadeIn,
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -42,6 +42,11 @@ class AppPages {
     GetPage(
       name: _Paths.HOST,
       page: () => hostTripView(),
+      binding: hostTripBinding(),
+    ),
+    GetPage(
+      name: _Paths.GENERATOR,
+      page: () => ai_generator_view(),
       binding: hostTripBinding(),
     ),
   ];

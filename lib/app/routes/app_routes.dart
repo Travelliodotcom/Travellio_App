@@ -14,7 +14,7 @@ abstract class Routes {
   static const APPSETTINGS = _Paths.APPSETTINGS;
   static const CHANGEPASSWORD = _Paths.CHANGEPASSWORD;
   static const HOST = _Paths.HOST;
-
+  static const GENERATOR = _Paths.GENERATOR;
 }
 
 abstract class _Paths {
@@ -27,4 +27,5 @@ abstract class _Paths {
   static const APPSETTINGS = '/appsettings';
   static const CHANGEPASSWORD = '/changepassword';
   static const HOST = '/host';
+  static const GENERATOR = '/generator';
 }

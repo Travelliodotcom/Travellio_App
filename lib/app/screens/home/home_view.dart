@@ -19,220 +19,232 @@ class HomeView extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.pageColor,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
-          backgroundColor: AppColor.weirdBlue,
-        ),
-        body: Padding(
-          padding: EdgeInsets.only(left: screenWidth * 0.03),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Location",
-                          style: TextStyle(
-                              fontFamily: "inter",
-                              color: AppColor.accentGrey,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(
-                          height: 4,
-                        ),
-                        Obx(() {
-                          final locationText =
-                              '${homeController.location.value}, ${homeController.country_obs.value} ';
-                          return Text(
-                            locationText,
-                            style: const TextStyle(
-                              fontFamily: "inter",
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
-                            ),
-                          );
-                        }),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        right: screenWidth * 0.03, top: screenHeight * 0.02),
-                    child: IconButton(
-                        onPressed: () => {
-                              // showDialog(
-                              //     context: (context),
-                              //     builder: ((BuildContext context) {
-                              //       return AlertDialog(
-                              //         title: Text("PUT NOTIFICATION SCREEN"),
-                              //         actions: [
-                              //           TextButton(
-                              //               onPressed:
-                              //                   Navigator.of(context).pop,
-                              //               child: Text("Okay"))
-                              //         ],
-                              //       );
-                              //     }))
-                              Get.toNamed('/host'),
-                            },
-                        icon: Icon(
-                          Icons.calendar_month,
-                          size: 25,
-                          color: AppColor.notifIconColor,
-                        )),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: screenWidth * 0.03),
-                child: Divider(
-                  color: AppColor.accentGrey,
-                ),
-              ),
-              // const SizedBox(
-              //   height: 10,
-              // ),
-              Title(
-                color: Colors.orange,
-                child: const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Categories",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "inter",
-                      color: Colors.black,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                // width: screenWidth,
-                height: screenHeight * 0.1,
-                child: buildCategories(homeController),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Title(
-                    color: Colors.orange,
-                    child: const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Top Trips",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "inter",
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.only(right: 15),
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "See All",
-                            style: TextStyle(
-                              color: AppColor.accentGrey,
-                            ),
-                          )))
-                ],
-              ),
-              const SizedBox(
-                height: 0,
-              ),
-              Container(
-                height: screenHeight * 0.29,
-                child: buildTrips(screenWidth),
-              ),
-              Divider(color: AppColor.accentGrey,),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Title(
-                    color: Colors.orange,
-                    child: const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Group Trips",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "inter",
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Row(
+    return Scaffold(
+      backgroundColor: AppColor.pageColor,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed("/host");
+        },
+        backgroundColor: AppColor.weirdBlue,
+        child: const Icon(Icons.add),
+      ),
+      body: Padding(
+        padding:
+            EdgeInsets.only(left: screenWidth * 0.03, top: screenHeight * 0.03),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      Row(
+                        children: [
+                          Text(
+                            "Location",
+                            style: TextStyle(
+                                fontFamily: "inter",
+                                color: AppColor.accentGrey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(
+                            width: 3,
+                          ),
+                          Icon(Icons.public_rounded,
+                              color: AppColor.accentGrey),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Obx(() {
+                        final locationText =
+                            '${homeController.location.value}, ${homeController.country_obs.value} ';
+                        return Text(
+                          locationText,
+                          style: const TextStyle(
+                            fontFamily: "inter",
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                          ),
+                        );
+                      }),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      right: screenWidth * 0.03, top: screenHeight * 0.02),
+                  child: IconButton(
+                      onPressed: () => {
+                            // showDialog(
+                            //     context: (context),
+                            //     builder: ((BuildContext context) {
+                            //       return AlertDialog(
+                            //         title: Text("PUT NOTIFICATION SCREEN"),
+                            //         actions: [
+                            //           TextButton(
+                            //               onPressed:
+                            //                   Navigator.of(context).pop,
+                            //               child: Text("Okay"))
+                            //         ],
+                            //       );
+                            //     }))
+                            Get.toNamed('/host'),
+                          },
+                      icon: Icon(
+                        Icons.calendar_month,
+                        size: 25,
+                        color: AppColor.notifIconColor,
+                      )),
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: screenWidth * 0.03),
+              child: Divider(
+                color: AppColor.accentGrey,
+              ),
+            ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            Title(
+              color: Colors.orange,
+              child: const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Categories",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "inter",
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              // width: screenWidth,
+              height: screenHeight * 0.1,
+              child: buildCategories(homeController),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Title(
+                  color: Colors.orange,
+                  child: const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Top Trips",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "inter",
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "See All",
+                          style: TextStyle(
+                            color: AppColor.accentGrey,
+                          ),
+                        )))
+              ],
+            ),
+            const SizedBox(
+              height: 0,
+            ),
+            SizedBox(
+              height: screenHeight * 0.29,
+              child: buildTrips(screenWidth),
+            ),
+            Divider(
+              color: AppColor.accentGrey,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Title(
+                  color: Colors.orange,
+                  child: const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Group Trips",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "inter",
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: 80,
+                      height: 38,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "See All",
+                          style: TextStyle(
+                              color: AppColor.accentGrey, fontSize: 12),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Container(
                         width: 80,
                         height: 38,
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppColor.weirdBlue,
                             borderRadius: BorderRadius.circular(10)),
                         child: TextButton(
                           onPressed: () {},
-                          child: Text(
-                            "See All",
-                            style: TextStyle(
-                                color: AppColor.accentGrey, fontSize: 12),
+                          // style: TextButton.styleFrom(backgroundColor: AppColor.weirdBlue),
+                          child: const Text(
+                            "Create One",
+                            style: TextStyle(color: Colors.white, fontSize: 12),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 15),
-                        child: Container(
-                          width: 80,
-                          height: 38,
-                          decoration: BoxDecoration(
-                              color: AppColor.weirdBlue,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: TextButton(
-                            onPressed: () {},
-                            // style: TextButton.styleFrom(backgroundColor: AppColor.weirdBlue),
-                            child: Text(
-                              "Create One",
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 12),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Container(
-                height: screenHeight * 0.20,
-                // color: Colors.orange,
-                width: screenWidth,
-                child: buildGroupTrips(),
-              ),
-            ],
-          ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            // const SizedBox(height: 3,),
+            SizedBox(
+              height: screenHeight * 0.20,
+              // color: Colors.orange,
+              width: screenWidth,
+              child: buildGroupTrips(),
+            ),
+          ],
         ),
       ),
     );
@@ -392,7 +404,7 @@ Widget buildTrips(double cardWidth) {
                                           color: AppColor.weirdBlue,
                                           fontSize: 20),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 2,
                                     ),
                                     Text(
@@ -404,7 +416,7 @@ Widget buildTrips(double cardWidth) {
                                   ],
                                 ),
                                 // IconButton(onPressed: (){}, icon:Icon(Icons.heart_broken, size: 25,))
-                                Icon(
+                                const Icon(
                                   Icons.heart_broken,
                                   size: 30,
                                 ),

@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
@@ -5,7 +7,10 @@ import 'package:travellio/app/screens/host_trip/host_trip_controller.dart';
 import 'package:travellio/app/utils/app_colors.dart';
 import 'package:travellio/app/widgets/custom_button.dart';
 
+// ignore: must_be_immutable
 class hostTripView extends GetView {
+  hostTripView({super.key});
+  @override
   hostTripController controller = hostTripController();
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,7 @@ class hostTripView extends GetView {
           leading: IconButton(
             onPressed: () => Get.offAllNamed('/home'),
             icon: const Icon(Icons.arrow_back),
-            color: Colors.black,
+            color: Colors.black,        
           )),
       body: SingleChildScrollView(
         child: Padding(
