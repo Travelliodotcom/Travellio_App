@@ -26,13 +26,13 @@ class Chatroom extends GetView<BuildLayoutController> {
               color: Colors.black,
             )),
         elevation: 0,
-        backgroundColor: AppColor.bgColor,
+        backgroundColor: AppColor.pageColor,
         title: Text(
           "Redfish Lake",
           style: TextStyle(color: Colors.black, fontSize: 25),
         ),
       ),
-      backgroundColor: AppColor.bgColor,
+      backgroundColor: AppColor.pageColor,
       body: Column(
         children: [
           Expanded(
@@ -72,7 +72,7 @@ class Chatroom extends GetView<BuildLayoutController> {
                   itemBuilder: (context, index) {
                     if (index == messages.length) {
                       return Column(
-                       // mainAxisAlignment: MainAxisAlignment.start,
+                        // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text("Thursday 9th November"),
                           Text("[INSERT PHOTO HERE]"),
@@ -128,10 +128,12 @@ class Chatroom extends GetView<BuildLayoutController> {
                                 child: IntrinsicWidth(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      border: Border.all(width: 0.4,color: AppColor.accentGrey),
+                                      border: Border.all(
+                                          width: 0.4,
+                                          color: AppColor.accentGrey),
                                       borderRadius: BorderRadius.circular(22),
                                       color: isCurrentUserMessage
-                                          ? AppColor.textColor
+                                          ? Colors.black
                                           : Colors.white,
                                     ),
                                     child: Center(
@@ -182,17 +184,17 @@ class Chatroom extends GetView<BuildLayoutController> {
                       controller: chatroomcontroller.messagec,
                       decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: AppColor.accentGrey),
+                              borderSide:
+                                  BorderSide(color: AppColor.accentGrey),
                               borderRadius: BorderRadius.circular(20)),
                           focusedBorder: OutlineInputBorder(
-                             borderSide: BorderSide(color: AppColor.accentGrey),
-                           
+                              borderSide:
+                                  BorderSide(color: AppColor.accentGrey),
                               borderRadius: BorderRadius.circular(20)),
                           hintText: "Type Something...",
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
-
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide.none)),
                     ),
@@ -204,7 +206,7 @@ class Chatroom extends GetView<BuildLayoutController> {
                     width: screenWidth * 0.17,
                     decoration: BoxDecoration(
                       border: Border.all(color: AppColor.accentGrey),
-                      color: AppColor.sendColor,
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(22),
                     ),
                     child: IconButton(
@@ -213,14 +215,14 @@ class Chatroom extends GetView<BuildLayoutController> {
                         Icons.send,
                       ),
                       onPressed: () {
-                       if(chatroomcontroller.messagec.text.isNotEmpty){
-                         chatroomcontroller.messageValue =
-                            chatroomcontroller.messagec.text.toString();
-                        chatroomcontroller.messagec.clear();
-                        chatroomcontroller.addChatToARoom(
-                            chatroomcontroller.messageValue,
-                            currentUser!.email.toString());
-                       }
+                        if (chatroomcontroller.messagec.text.isNotEmpty) {
+                          chatroomcontroller.messageValue =
+                              chatroomcontroller.messagec.text.toString();
+                          chatroomcontroller.messagec.clear();
+                          chatroomcontroller.addChatToARoom(
+                              chatroomcontroller.messageValue,
+                              currentUser!.email.toString());
+                        }
                       },
                     ),
                   ),
