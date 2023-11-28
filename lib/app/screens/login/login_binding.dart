@@ -8,8 +8,8 @@ class LoginBinding extends Bindings {
     Get.lazyPut<LoginController>(
       () => LoginController(),
     );
-    Get.lazyPut<BuildLayoutController>(
-      () => BuildLayoutController(),
-    );
+    // Get.lazyPut<BuildLayoutController>(
+    //   () => BuildLayoutController(),
+    // );
   }
 }

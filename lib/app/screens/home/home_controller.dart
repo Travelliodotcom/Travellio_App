@@ -10,6 +10,8 @@ class HomeController extends GetxController {
   var selectedIndex = 0.obs;
   RxString location = "Fetching Location..".obs;
   RxString country_obs = "".obs;
+  int itemCounter = 10;
+  RxBool isFetch = false.obs;
 
   final Duration updateInterval = const Duration(seconds: 20);
   late Timer locationUpdateTimer;
@@ -41,12 +43,13 @@ class HomeController extends GetxController {
         String? country = placemarks[0].country;
         country_obs.value = country!;
         location.value = city!;
+        isFetch = true.obs;
       } else {
         location.value = 'Location not found';
       }
     } catch (e) {
       print('Error: $e');
-      location.value = 'Error obtaining location';
+      location.value = 'Switch on Location';
     }
   }
 
@@ -72,4 +75,22 @@ class HomeController extends GetxController {
     }
     return await Geolocator.getCurrentPosition();
   }
+
+  List<String> locationNames = [
+    "OrangeFish lake",
+    "Scary Mountains",
+    "Ancient Pillars",
+    "OrangeFish lake",
+    "Scary Mountains",
+    "Ancient Pillars"
+  ];
+
+  List<String> imageURL = [
+    "https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/1367192/pexels-photo-1367192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/4916671/pexels-photo-4916671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "https://images.pexels.com/photos/1367192/pexels-photo-1367192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/4916671/pexels-photo-4916671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  ];
 }

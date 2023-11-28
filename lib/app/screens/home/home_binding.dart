@@ -8,8 +8,8 @@ class HomeBinding extends Bindings {
     Get.lazyPut<HomeController>(
       () => HomeController(),
     );
-    Get.lazyPut<BuildLayoutController>(
-      () => BuildLayoutController(),
-    );
+    // Get.lazyPut<BuildLayoutController>(
+    //   () => BuildLayoutController(),
+    // );
   }
 }

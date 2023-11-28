@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:travellio/app/screens/profile/profile_controller.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/menu_tile.dart';
-import 'profile_controller.dart';
 
-class ProfileView extends StatelessWidget {
-  final ProfileController _profileController = Get.put(ProfileController());
-
-  ProfileView({super.key});
+class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -94,7 +91,7 @@ class ProfileView extends StatelessWidget {
                     color: AppColor.locIconColor,
                     weight: 40,
                   ),
-                  onTap: () => _profileController.logout()),
+                  onTap: () => controller.logout()),
             ],
           )
         ],

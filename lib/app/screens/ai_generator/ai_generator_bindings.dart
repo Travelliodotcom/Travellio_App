@@ -9,8 +9,8 @@ class ai_generator_binding extends Bindings {
     Get.lazyPut<ai_generator_Controller>(
       () => ai_generator_Controller(),
     );
-    Get.lazyPut<BuildLayoutController>(
-      () => BuildLayoutController(),
-    );
+    // Get.lazyPut<BuildLayoutController>(
+    //   () => BuildLayoutController(),
+    // );
   }
 }

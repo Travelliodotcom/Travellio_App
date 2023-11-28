@@ -28,7 +28,7 @@ class ActivitesTile extends StatelessWidget {
         width: screenWidth * 0.45,
         padding: EdgeInsets.symmetric(
           horizontal: screenWidth * 0.04,
-          vertical: screenHeight * 0.01,
+          vertical: screenHeight * 0.015,
         ),
         margin: const EdgeInsets.only(right: 10, bottom: 10),
         decoration: BoxDecoration(

@@ -6,8 +6,9 @@ import 'package:travellio/app/screens/chatroom/chatroom_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:travellio/app/utils/app_colors.dart';
 import 'package:travellio/app/utils/buildLayout/buildLayout_controller.dart';
+import 'package:travellio/app/widgets/bottomNavBar.dart';
 
-class Chatroom extends GetView<BuildLayoutController> {
+class Chatroom extends GetView {
   Chatroom({Key? key}) : super(key: key);
   final Chatroomcontroller chatroomcontroller = Get.put(Chatroomcontroller());
 
@@ -17,6 +18,7 @@ class Chatroom extends GetView<BuildLayoutController> {
     var screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      bottomNavigationBar: bottomNavBar(),
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
