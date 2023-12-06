@@ -18,11 +18,13 @@ class Chatroom extends GetView {
     var screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      bottomNavigationBar: bottomNavBar(),
+      //bottomNavigationBar: bottomNavBar(),
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed("/chat");
+            },
             icon: Icon(
               Icons.arrow_back,
               color: Colors.black,
@@ -50,14 +52,14 @@ class Chatroom extends GetView {
                   return Text('Error: ${snapshot.error}');
                 }
 
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  // Display a loading indicator
-                  return Center(
-                      child: Container(
-                          height: 100,
-                          width: 100,
-                          child: CircularProgressIndicator()));
-                }
+                // if (snapshot.connectionState == ConnectionState.waiting) {
+                //   // Display a loading indicator
+                //   return Center(
+                //       child: Container(
+                //           height: 100,
+                //           width: 100,
+                //           child: CircularProgressIndicator()));
+                // }
 
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                   // No data available
@@ -74,11 +76,25 @@ class Chatroom extends GetView {
                   itemBuilder: (context, index) {
                     if (index == messages.length) {
                       return Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("Thursday 9th November"),
-                          Text("[INSERT PHOTO HERE]"),
-                          Text("You matched with Varun(eww)"),
+                          Text("Thursday 9th November",style: TextStyle(
+                            fontWeight: FontWeight.bold
+                          ),),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(height: 250,child: Image.asset("assets/images/profile_pic_placeholder.png")),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Text("You matched with Jane",style: TextStyle(
+                            fontWeight: FontWeight.bold
+                          ),),
+                          SizedBox(
+                            height: 50,
+                          ),
                         ],
                       );
                     } else {
@@ -88,8 +104,10 @@ class Chatroom extends GetView {
 
                       final text = messageData['text'];
                       final timestamp = messageData['timestamp'];
+                      final dateTime;
 
-                      var dateTime = timestamp.toDate();
+                      if(timestamp!=null && timestamp is Timestamp){
+                       dateTime = (timestamp as Timestamp).toDate();
 
 // Extract the time components
                       int hours = dateTime.hour;
@@ -135,7 +153,7 @@ class Chatroom extends GetView {
                                           color: AppColor.accentGrey),
                                       borderRadius: BorderRadius.circular(22),
                                       color: isCurrentUserMessage
-                                          ? Colors.black
+                                          ? AppColor.weirdBlue
                                           : Colors.white,
                                     ),
                                     child: Center(
@@ -167,7 +185,7 @@ class Chatroom extends GetView {
                             ],
                           ),
                         ),
-                      );
+                      );}
                     }
                   },
                 );
@@ -176,48 +194,16 @@ class Chatroom extends GetView {
           ),
           SingleChildScrollView(
             //scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: SizedBox(
-                    width: screenWidth * 0.75,
-                    child: TextField(
-                      controller: chatroomcontroller.messagec,
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: AppColor.accentGrey),
-                              borderRadius: BorderRadius.circular(20)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: AppColor.accentGrey),
-                              borderRadius: BorderRadius.circular(20)),
-                          hintText: "Type Something...",
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide.none)),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: Container(
-                    width: screenWidth * 0.17,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColor.accentGrey),
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(22),
-                    ),
-                    child: IconButton(
-                      iconSize: 40,
-                      icon: Icon(
-                        Icons.send,
-                      ),
-                      onPressed: () {
-                        if (chatroomcontroller.messagec.text.isNotEmpty) {
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                width: screenWidth * 0.93,
+                child: TextField(
+                  
+                  controller: chatroomcontroller.messagec,
+                  decoration: InputDecoration(
+                    suffixIcon: IconButton(onPressed: (){
+                       if (chatroomcontroller.messagec.text.isNotEmpty) {
                           chatroomcontroller.messageValue =
                               chatroomcontroller.messagec.text.toString();
                           chatroomcontroller.messagec.clear();
@@ -225,11 +211,23 @@ class Chatroom extends GetView {
                               chatroomcontroller.messageValue,
                               currentUser!.email.toString());
                         }
-                      },
-                    ),
-                  ),
+                    }, icon: Icon(Icons.send,size: 35,color: AppColor.weirdBlue,)),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: AppColor.accentGrey),
+                          borderRadius: BorderRadius.circular(20)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: AppColor.accentGrey),
+                          borderRadius: BorderRadius.circular(20)),
+                      hintText: "Type Something...",
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide.none)),
                 ),
-              ],
+              ),
             ),
           )
         ],

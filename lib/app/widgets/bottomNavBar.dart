@@ -44,7 +44,9 @@ class bottomNavBar extends GetView<PageIndexController> {
             GButton(
                 icon: Icons.chat_rounded,
                 iconColor: AppColor.accentGrey,
-                text: "Chat"),
+                text: "Chat",
+                onPressed: ()=>controller.changePage(2),),
+                
             GButton(
                 icon: Icons.favorite,
                 iconColor: AppColor.accentGrey,

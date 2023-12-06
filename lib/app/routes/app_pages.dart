@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:travellio/app/screens/ai_generator/ai_generator_bindings.dart';
 import 'package:travellio/app/screens/ai_generator/ai_generator_view.dart';
+import 'package:travellio/app/screens/chatpage/chatpage_binding.dart';
+import 'package:travellio/app/screens/chatpage/chatpage_view.dart';
 import 'package:travellio/app/screens/chatroom/chatroom_binding.dart';
 import 'package:travellio/app/screens/chatroom/chatroom_view.dart';
 import 'package:travellio/app/screens/home/home_view.dart';
@@ -70,8 +72,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CHAT,
-      page: () => Chatroom(),
-      binding: ChatroomBinding(),
+      page: () => Chatpage(),
+      binding: ChatpageBinding(),
     ),
   ];
 }

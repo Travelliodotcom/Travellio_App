@@ -12,4 +12,5 @@ class AppColor {
   static Color goldenStar = const Color.fromARGB(255, 255, 192, 97);
   static Color randomGrey = const Color(0xFFB3B3B3);
   static Color hostPageText = const Color(0xFF4F4F4F);
+  static Color chatGreen=Color.fromARGB(255, 229, 252, 255);
 }
