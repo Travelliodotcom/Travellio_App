@@ -10,8 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-    Get.put(PageIndexController(), permanent: true);
-
+  Get.put(PageIndexController(), permanent: true);
 
   runApp(StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),

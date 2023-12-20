@@ -1,7 +1,7 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-//import 'package:get/get_core/src/get_main.dart';
 import 'package:travellio/app/screens/chatroom/chatroom_view.dart';
 
 class chatContainer extends StatelessWidget {
@@ -9,71 +9,60 @@ class chatContainer extends StatelessWidget {
   final String message;
   final String photo;
   final Color color;
-  const chatContainer(
-      {super.key,
-      required this.name,
-      required this.message,
-      required this.photo,required this.color});
+
+  const chatContainer({
+    Key? key,
+    required this.name,
+    required this.message,
+    required this.photo,
+    required this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
       child: GestureDetector(
         onTap: () {
           Get.to(Chatroom());
         },
-        child: Container(
-          height: 80,
-          decoration: BoxDecoration(
+        child: Card(
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            color: color,
           ),
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: CircleAvatar(
-                  backgroundImage: AssetImage(photo),
-                  radius: 40,
-                  backgroundColor: Colors.white,
+          color: color,
+          child: ListTile(
+            contentPadding: const EdgeInsets.all(10),
+            leading: CircleAvatar(
+              backgroundImage: AssetImage(photo),
+              radius: 30,
+              backgroundColor: Colors.white,
+            ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  name,
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Row(
-                    //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 170),
-                        child: Text(
-                          name,
-                          style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Text("9:32 am")
-                    ],
+                const Text("9:32 am"),
+              ],
+            ),
+            subtitle: Row(
+              children: [
+                SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: Image.asset("assets/images/Vector.png"),
+                ),
+                Text(
+                  message,
+                  style: const TextStyle(
+                    fontSize: 12,
                   ),
-                  Row(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                          height: 20,
-                          width: 20,
-                          child: Image.asset("assets/images/Vector.png")),
-                      Text(
-                        message,
-                        style: TextStyle(
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              )
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

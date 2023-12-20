@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travellio/app/controllers/page_index_controller.dart';
 import 'package:travellio/app/utils/app_colors.dart';
-import 'package:travellio/app/widgets/bottomNavBar.dart';
 import '../../widgets/build_categories.dart';
 import '../../widgets/build_group_trips.dart';
 import '../../widgets/build_trips.dart';
@@ -22,7 +21,6 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       backgroundColor: AppColor.pageColor,
-      bottomNavigationBar: const bottomNavBar(),
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Column(
@@ -92,17 +90,15 @@ class HomeView extends GetView<HomeController> {
                           children: [
                             IconButton(
                                 onPressed: () => {
-                                      Get.toNamed('/host'),
+                                      // Get.toNamed('/host'),
                                     },
                                 icon: Icon(
-                                  Icons.add,
+                                  Icons.calendar_month_outlined,
                                   size: 30,
                                   color: AppColor.notifIconColor,
                                 )),
                             IconButton(
-                                onPressed: () => {
-                                  Get.toNamed('/profile')
-                                },
+                                onPressed: () => {Get.toNamed('/profile')},
                                 icon: Icon(
                                   Icons.person,
                                   size: 30,
@@ -258,7 +254,9 @@ class HomeView extends GetView<HomeController> {
                                     color: AppColor.weirdBlue,
                                     borderRadius: BorderRadius.circular(10)),
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.toNamed('/host');
+                                  },
                                   child: const Row(
                                     children: [
                                       Text(

@@ -5,6 +5,8 @@ import '../../utils/app_colors.dart';
 import '../../widgets/menu_tile.dart';
 
 class ProfileView extends GetView<ProfileController> {
+  const ProfileView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -20,7 +22,7 @@ class ProfileView extends GetView<ProfileController> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           leading: IconButton(
-            onPressed: () => Get.offAllNamed('/home'),
+            onPressed: () => Get.back(),
             icon: const Icon(Icons.arrow_back),
             color: Colors.black,
           )),

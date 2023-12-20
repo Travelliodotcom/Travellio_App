@@ -9,8 +9,6 @@ import '../utils/app_colors.dart';
 class bottomNavBar extends GetView<PageIndexController> {
   const bottomNavBar({super.key});
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,10 +22,6 @@ class bottomNavBar extends GetView<PageIndexController> {
           activeColor: AppColor.weirdBlue,
           padding: const EdgeInsets.all(16),
           iconSize: 30,
-          selectedIndex: controller.pageIndex.value,
-          onTabChange: (index) {
-            controller.changePage(index);
-          },
           tabs: [
             GButton(
               icon: Icons.home,
@@ -42,15 +36,17 @@ class bottomNavBar extends GetView<PageIndexController> {
               onPressed: () => controller.changePage(1),
             ),
             GButton(
-                icon: Icons.chat_rounded,
-                iconColor: AppColor.accentGrey,
-                text: "Chat",
-                onPressed: ()=>controller.changePage(2),),
-                
+              icon: Icons.chat_rounded,
+              iconColor: AppColor.accentGrey,
+              text: "Chat",
+              onPressed: () => controller.changePage(2),
+            ),
             GButton(
-                icon: Icons.favorite,
-                iconColor: AppColor.accentGrey,
-                text: "Search"),
+              icon: Icons.favorite,
+              iconColor: AppColor.accentGrey,
+              text: "Search",
+              onPressed: () => controller.changePage(3),
+            ),
           ],
         ),
       ),

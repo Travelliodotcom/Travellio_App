@@ -16,6 +16,7 @@ abstract class Routes {
   static const HOST = _Paths.HOST;
   static const GENERATOR = _Paths.GENERATOR;
   static const CHAT = _Paths.CHAT;
+  static const SWIPE = _Paths.SWIPE;
 }
 
 abstract class _Paths {
@@ -28,6 +29,7 @@ abstract class _Paths {
   static const APPSETTINGS = '/appsettings';
   static const CHANGEPASSWORD = '/changepassword';
   static const HOST = '/host';
-  static const GENERATOR = '/generator';  
-  static const CHAT = '/chat';  
+  static const GENERATOR = '/generator';
+  static const CHAT = '/chat';
+  static const SWIPE = '/swipe';
 }

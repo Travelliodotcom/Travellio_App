@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:get/get.dart';
 import 'package:travellio/app/screens/host_trip/host_trip_controller.dart';
 

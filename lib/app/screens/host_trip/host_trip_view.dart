@@ -1,7 +1,6 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:travellio/app/screens/host_trip/host_trip_controller.dart';
 import 'package:travellio/app/utils/app_colors.dart';
@@ -18,6 +17,7 @@ class hostTripView extends GetView {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+         scrolledUnderElevation: 0,
           centerTitle: true,
           title: const Text(
             "Host a Trip",
@@ -26,7 +26,8 @@ class hostTripView extends GetView {
           elevation: 0,
           backgroundColor: Colors.transparent,
           leading: IconButton(
-            onPressed: () => Get.offAllNamed('/home'),
+            // onPressed: () => Get.offAllNamed('/home'),
+            onPressed: ()=> Get.back(),
             icon: const Icon(Icons.arrow_back),
             color: Colors.black,
           )),

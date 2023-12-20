@@ -25,7 +25,9 @@ dependencies:
   flutter_animation_progress_bar: ^2.3.1
   cloud_firestore: ^4.13.2
   google_nav_bar: ^5.0.6
+  swipe_cards: ^2.0.0+1
 
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

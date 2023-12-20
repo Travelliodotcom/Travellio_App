@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travellio/app/screens/chatpage/chatpage_controller.dart';
 import 'package:travellio/app/utils/app_colors.dart';
-import 'package:travellio/app/utils/buildLayout/buildLayout_controller.dart';
-import 'package:travellio/app/widgets/bottomNavBar.dart';
 import 'package:travellio/app/widgets/chatcontainer.dart';
 
 class Chatpage extends GetView {
@@ -14,7 +12,6 @@ class Chatpage extends GetView {
     var tabController = Get.put(Chatpagecontroller());
 
     return Scaffold(
-      bottomNavigationBar: bottomNavBar(),
       backgroundColor: AppColor.pageColor,
       appBar: AppBar(
         actions: [
@@ -22,18 +19,16 @@ class Chatpage extends GetView {
           //   onPressed: () {},
           //   icon: Icon(Icons.create, color: Colors.black),
           // ),
-          GestureDetector(onTap: (){},child: Image.asset("assets/images/newchaticon.png"))
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: GestureDetector(onTap: (){},child: Image.asset("assets/images/newchaticon.png")),
+          )
         ],
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Get.toNamed("/home");
-          },
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-        ),
+        
         elevation: 0,
         backgroundColor: AppColor.pageColor,
-        title: Text(
+        title: const Text(
           "Messages",
           style: TextStyle(color: Colors.black, fontSize: 25),
         ),
@@ -62,7 +57,7 @@ class Chatpage extends GetView {
                           borderSide: BorderSide(
                               color: AppColor.botomNavBarItem.withOpacity(0.5)),
                           borderRadius: BorderRadius.circular(30)),
-                      prefixIcon: Icon(Icons.search, color: Colors.grey),
+                      prefixIcon: const Icon(Icons.search, color: Colors.grey),
                       hintText: "Search",
                       filled: true,
                       fillColor: Colors.white,
@@ -86,49 +81,50 @@ class Chatpage extends GetView {
                   child: TabBar(
                     unselectedLabelColor: AppColor.weirdBlue,
                     controller: tabController.controller,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    labelColor: Colors.white,
                     indicator: ShapeDecoration(
+
                       shape: RoundedRectangleBorder(
+                        
                         borderRadius: BorderRadius.only(
                           topLeft: tabController.tabIndex.value == 0
-                              ? Radius.circular(10)
+                              ? const Radius.circular(10)
                               : Radius.zero,
                           topRight: tabController.tabIndex.value == 1
-                              ? Radius.circular(10)
+                              ? const Radius.circular(10)
                               : Radius.zero,
                         ),
                       ),
                       color: AppColor.weirdBlue,
                     ),
-                    tabs: [
+                    tabs: const [
                       Tab(text: "Private"),
                       Tab(text: "Group"),
                     ],
                   ),
                 ),
               )),
-// Container(
-//             height: 2.0,
-//             color: AppColor.weirdBlue,
-//           ),
+
           Expanded(
             child: TabBarView(
               controller: tabController.controller,
               children: [
                 ListView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   children: [
-                    chatContainer(
+                    const chatContainer(
                         name: "Jane",
                         message: "Chingchong",
                         photo: "assets/images/profile_pic_placeholder.png",color: Colors.white,),
-                    chatContainer(name: "Nego", message: "Meet me in prison", photo: "assets/images/Ellipse 6.png",color: Colors.white,),
+                    const chatContainer(name: "Nego", message: "Meet me in prison", photo: "assets/images/Ellipse 6.png",color: Colors.white,),
                     chatContainer(name: "Woman", message: "Bj vs Hj?", photo: "assets/images/negow.png",color: AppColor.chatGreen,),
-                    chatContainer(name: "Tommy", message: "moye moye", photo: "assets/images/tommy.png", color: Colors.white),
-                    chatContainer(name: "Alibhoi", message: "khuda hafeez", photo: "assets/images/ali.png", color: AppColor.chatGreen),
-                    chatContainer(name: "Eshu", message: "Singer-Guitarist", photo: "assets/images/meta.png", color: Colors.white)
+                    const chatContainer(name: "Tommy", message: "moye moye", photo: "assets/images/tommy.png", color: Colors.white),
+                    const chatContainer(name: "Alibhoi", message: "khuda hafeez", photo: "assets/images/ali.png", color: Colors.white),
+                    const chatContainer(name: "Eshu", message: "Singer-Guitarist", photo: "assets/images/meta.png", color: Colors.white)
                   ],
                 ),
-                Center(child: Text("NO GROUPS CREATED YET CUZ UR A LONER")),
+                const Center(child: Text("NO GROUPS CREATED YET CUZ UR A LONER")),
               ],
             ),
           ),

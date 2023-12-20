@@ -5,13 +5,15 @@ import 'package:get/get.dart';
 import 'package:travellio/app/controllers/page_index_controller.dart';
 import 'package:travellio/app/screens/ai_generator/ai_generator_controller.dart';
 import 'package:travellio/app/widgets/activites_tile.dart';
-import 'package:travellio/app/widgets/bottomNavBar.dart';
 import 'package:travellio/app/widgets/custom_button.dart';
 
 import '../../utils/app_colors.dart';
 
 class ai_generator_view extends GetView<ai_generator_Controller> {
-    final PageIndexController _pageIndexController = Get.find<PageIndexController>();
+  final ai_generator_Controller chatroomcontroller =
+      Get.put(ai_generator_Controller());
+  final PageIndexController pageIndexController =
+      Get.put(PageIndexController());
 
   ai_generator_view({super.key});
   @override
@@ -20,8 +22,8 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      bottomNavigationBar: bottomNavBar(),
       appBar: AppBar(
+          scrolledUnderElevation: 0,
           centerTitle: true,
           title: const Text(
             "AI Trip Generator",
@@ -29,11 +31,15 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
           ),
           elevation: 0,
           backgroundColor: Colors.transparent,
-          leading: IconButton(
-            onPressed: () => Get.offAllNamed('/home'),
-            icon: const Icon(Icons.arrow_back),
-            color: const Color.fromARGB(255, 141, 132, 132),
-          )),
+          // leading: IconButton(
+          //   onPressed: () {
+          //     pageIndexController.changePage(0);
+          //     Get.back();
+          //   },
+          //   icon: const Icon(Icons.arrow_back),
+          //   color: const Color.fromARGB(255, 141, 132, 132),
+          // )),
+      ),
       backgroundColor: AppColor.pageColor,
       body: SingleChildScrollView(
         // physics: const NeverScrollableScrollPhysics(),
@@ -80,17 +86,16 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: controller.increment,
+                    onPressed: controller.decrement,
                     style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
                         backgroundColor: AppColor.weirdBlue,
                         splashFactory: NoSplash.splashFactory),
-                    child: const Text(
-                      "+",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+                    child: const Icon(
+                      Icons.remove,
+                      color: Colors.white,
+                      size: 20,
+                      weight: 30,
                     ),
                   ),
                   Obx(() => Text(
@@ -103,16 +108,17 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                         ),
                       )),
                   ElevatedButton(
-                    onPressed: controller.decrement,
+                    onPressed: controller.increment,
                     style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
                         backgroundColor: AppColor.weirdBlue,
                         splashFactory: NoSplash.splashFactory),
-                    child: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                      size: 20,
-                      weight: 30,
+                    child: const Text(
+                      "+",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
                   )
                 ],
@@ -138,8 +144,7 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                       min: 0,
                       max: 1000,
                       divisions: 200,
-                      label:
-                          "\$${controller.sliderValue.value.toInt()}",
+                      label: "\$${controller.sliderValue.value.toInt()}",
                       value: controller.sliderValue.value,
                       onChanged: controller.updateSlider,
                       activeColor: AppColor.weirdBlue,
@@ -168,8 +173,7 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                           ActivitesTile(
                             text: "Photography",
                             icon: Icons.camera_alt_outlined,
-                            isSelected: controller
-                                .selectedActivities
+                            isSelected: controller.selectedActivities
                                 .contains("Photography"),
                             onTap: () => controller
                                 .toggleActivitySelection("Photography"),
@@ -177,11 +181,10 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                           ActivitesTile(
                             text: "Shopping",
                             icon: Icons.shopping_bag_outlined,
-                            isSelected: controller
-                                .selectedActivities
+                            isSelected: controller.selectedActivities
                                 .contains("Shopping"),
-                            onTap: () => controller
-                                .toggleActivitySelection("Shopping"),
+                            onTap: () =>
+                                controller.toggleActivitySelection("Shopping"),
                           ),
                         ],
                       ),
@@ -191,20 +194,18 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                           ActivitesTile(
                             text: "Museum",
                             icon: Icons.museum_sharp,
-                            isSelected: controller
-                                .selectedActivities
+                            isSelected: controller.selectedActivities
                                 .contains("Museum"),
-                            onTap: () => controller
-                                .toggleActivitySelection("Museum"),
+                            onTap: () =>
+                                controller.toggleActivitySelection("Museum"),
                           ),
                           ActivitesTile(
                             text: "Sports",
                             icon: Icons.sports_basketball,
-                            isSelected: controller
-                                .selectedActivities
+                            isSelected: controller.selectedActivities
                                 .contains("Sports"),
-                            onTap: () => controller
-                                .toggleActivitySelection("Sports"),
+                            onTap: () =>
+                                controller.toggleActivitySelection("Sports"),
                           ),
                         ],
                       ),
@@ -214,20 +215,18 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                           ActivitesTile(
                             text: "Cooking",
                             icon: Icons.cookie_outlined,
-                            isSelected: controller
-                                .selectedActivities
+                            isSelected: controller.selectedActivities
                                 .contains("Cooking"),
-                            onTap: () => controller
-                                .toggleActivitySelection("Cooking"),
+                            onTap: () =>
+                                controller.toggleActivitySelection("Cooking"),
                           ),
                           ActivitesTile(
                             text: "Beaches",
                             icon: Icons.waves,
-                            isSelected: controller
-                                .selectedActivities
+                            isSelected: controller.selectedActivities
                                 .contains("Beaches"),
-                            onTap: () => controller
-                                .toggleActivitySelection("Beaches"),
+                            onTap: () =>
+                                controller.toggleActivitySelection("Beaches"),
                           ),
                         ],
                       ),
@@ -237,20 +236,18 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                           ActivitesTile(
                             text: "Clubbing",
                             icon: Icons.nightlife,
-                            isSelected: controller
-                                .selectedActivities
+                            isSelected: controller.selectedActivities
                                 .contains("Clubbing"),
-                            onTap: () => controller
-                                .toggleActivitySelection("Clubbing"),
+                            onTap: () =>
+                                controller.toggleActivitySelection("Clubbing"),
                           ),
                           ActivitesTile(
                             text: "Music",
                             icon: Icons.library_music_outlined,
-                            isSelected: controller
-                                .selectedActivities
-                                .contains("Music"),
-                            onTap: () => controller
-                                .toggleActivitySelection("Music"),
+                            isSelected:
+                                controller.selectedActivities.contains("Music"),
+                            onTap: () =>
+                                controller.toggleActivitySelection("Music"),
                           ),
                         ],
                       ),
@@ -260,20 +257,18 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                           ActivitesTile(
                             text: "Art",
                             icon: Icons.palette_outlined,
-                            isSelected: controller
-                                .selectedActivities
-                                .contains("Art"),
-                            onTap: () => controller
-                                .toggleActivitySelection("Art"),
+                            isSelected:
+                                controller.selectedActivities.contains("Art"),
+                            onTap: () =>
+                                controller.toggleActivitySelection("Art"),
                           ),
                           ActivitesTile(
                             text: "Drink",
                             icon: Icons.wine_bar_outlined,
-                            isSelected: controller
-                                .selectedActivities
-                                .contains("Drink"),
-                            onTap: () => controller
-                                .toggleActivitySelection("Drink"),
+                            isSelected:
+                                controller.selectedActivities.contains("Drink"),
+                            onTap: () =>
+                                controller.toggleActivitySelection("Drink"),
                           ),
                         ],
                       ),
@@ -281,7 +276,9 @@ class ai_generator_view extends GetView<ai_generator_Controller> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               const customButton(text: "Create Trip")
             ],
           ),
