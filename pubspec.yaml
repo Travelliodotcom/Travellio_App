@@ -19,13 +19,13 @@ dependencies:
   google_sign_in: ^6.1.5
   google_fonts: ^6.1.0
   lottie: ^2.6.0
-  dot_navigation_bar: ^1.0.2
   geolocator: ^10.1.0
   geocoding: ^2.1.1
   flutter_animation_progress_bar: ^2.3.1
   cloud_firestore: ^4.13.2
   google_nav_bar: ^5.0.6
   swipe_cards: ^2.0.0+1
+  flutter_image_stack: ^0.0.7
 
   
 dev_dependencies:

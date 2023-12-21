@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
@@ -12,9 +13,23 @@ class HomeController extends GetxController {
   RxString country_obs = "".obs;
   int itemCounter = 10;
   RxBool isFetch = false.obs;
+  Rx<DateTime> selectedDate = DateTime.now().obs;
 
   final Duration updateInterval = const Duration(seconds: 20);
   late Timer locationUpdateTimer;
+
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate.value,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null && picked != selectedDate.value) {
+      selectedDate.value = picked;
+    }
+  }
 
   void changeIndex(int index) {
     selectedIndex.value = index;
