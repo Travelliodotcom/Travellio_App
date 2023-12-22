@@ -33,7 +33,7 @@ class LoginView extends GetView<LoginController> {
             Center(
               child: Padding(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.075),
+                    top: MediaQuery.of(context).size.height * 0.1),
                 child: Column(
                   children: [
                     SizedBox(
@@ -304,7 +304,7 @@ class LoginView extends GetView<LoginController> {
                     Container(
                       padding: EdgeInsets.only(bottom: screenHeight * 0.1),
                       alignment: Alignment.bottomCenter,
-                      child: const Column(
+                      child:  Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           SizedBox(height: 20),
@@ -321,17 +321,22 @@ class LoginView extends GetView<LoginController> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text(
-                                "Sign up here",
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  decoration: TextDecoration.underline,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700,
+                              GestureDetector(
+                                onTap: (){
+                                  Get.toNamed('/signup');
+                                },
+                                child: Text(
+                                  "Sign up here",
+                                  style: TextStyle(
+                                    fontFamily: 'Inter',
+                                    decoration: TextDecoration.underline,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
-                              )
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     )

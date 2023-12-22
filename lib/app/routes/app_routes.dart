@@ -17,6 +17,7 @@ abstract class Routes {
   static const GENERATOR = _Paths.GENERATOR;
   static const CHAT = _Paths.CHAT;
   static const SWIPE = _Paths.SWIPE;
+  
 }
 
 abstract class _Paths {

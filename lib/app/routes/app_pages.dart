@@ -78,5 +78,6 @@ class AppPages {
       page: () => swipeView(),
       binding: swipeBinding(),
     ),
+   
   ];
 }
