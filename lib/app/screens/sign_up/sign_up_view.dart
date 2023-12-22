@@ -67,6 +67,7 @@ class SignUpView extends GetView<SignUpController> {
               SizedBox(
                 width: screenWidth * 0.8,
                 child: TextField(
+                  controller: controller.emailc,
                   decoration: InputDecoration(
                       labelText: "Email-Id",
                       labelStyle: TextStyle(
@@ -81,6 +82,7 @@ class SignUpView extends GetView<SignUpController> {
               SizedBox(
                 width: screenWidth * 0.8,
                 child: TextField(
+                  controller: controller.userc,
                   decoration: InputDecoration(
                       labelText: "Username",
                       labelStyle: TextStyle(
@@ -95,6 +97,7 @@ class SignUpView extends GetView<SignUpController> {
               SizedBox(
                 width: screenWidth * 0.8,
                 child: TextField(
+                  controller: controller.passc,
                   decoration: InputDecoration(
                       labelText: "Password",
                       labelStyle: TextStyle(
@@ -139,7 +142,9 @@ class SignUpView extends GetView<SignUpController> {
                 padding: const EdgeInsets.only(bottom: 30),
                 width: screenWidth * 0.75,
                 child: ElevatedButton(
-                    onPressed: () async {},
+                    onPressed: () async {
+                     controller.signupUser();
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 18),
                       backgroundColor: Colors.white,

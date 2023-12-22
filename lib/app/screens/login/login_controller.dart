@@ -36,7 +36,7 @@ class LoginController extends GetxController {
       try {
         final credential = await auth.signInWithEmailAndPassword(
             email: emailc.text.trim(), password: passwordc.text);
-
+                
         if (credential.user != null) {
           if (credential.user!.emailVerified) {
             isLoading.value = false;
