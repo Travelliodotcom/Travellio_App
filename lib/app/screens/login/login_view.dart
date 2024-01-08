@@ -16,6 +16,7 @@ class LoginView extends GetView<LoginController> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: AppColor.weirdBlue,
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
@@ -33,7 +34,7 @@ class LoginView extends GetView<LoginController> {
             Center(
               child: Padding(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.1),
+                    top: MediaQuery.of(context).size.height * 0.06),
                 child: Column(
                   children: [
                     SizedBox(
@@ -112,6 +113,7 @@ class LoginView extends GetView<LoginController> {
                               ),
                             ),
                             Container(
+                              
                               margin: const EdgeInsets.only(bottom: 5),
                               width: screenWidth * 0.75,
                               decoration: BoxDecoration(
@@ -121,6 +123,7 @@ class LoginView extends GetView<LoginController> {
                               ),
                               child: Obx(
                                 () => TextField(
+                                  autofocus: true,
                                   controller: controller.passwordc,
                                   cursorColor: Colors.black,
                                   obscureText: controller.obscureText.value,
@@ -304,32 +307,33 @@ class LoginView extends GetView<LoginController> {
                     Container(
                       padding: EdgeInsets.only(bottom: screenHeight * 0.1),
                       alignment: Alignment.bottomCenter,
-                      child:  Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 "Don't have an Account?",
                                 style: TextStyle(
                                   fontFamily: 'Inter',
                                   color: Colors.white,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 4,
                               ),
                               GestureDetector(
-                                onTap: (){
+                                onTap: () {
                                   Get.toNamed('/signup');
                                 },
-                                child: Text(
+                                child: const Text(
                                   "Sign up here",
                                   style: TextStyle(
                                     fontFamily: 'Inter',
                                     decoration: TextDecoration.underline,
+                                    decorationColor: Colors.white,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w700,
                                   ),
