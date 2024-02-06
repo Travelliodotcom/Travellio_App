@@ -42,7 +42,7 @@ class swipeController {
           content: CardWidget(
             imageUrl:_imageUrls[i],
             name:_names[i],
-            age:_age[i]
+            age:_age[i], onTap: () { },
           ),
           likeAction: () {},
           nopeAction: () {},

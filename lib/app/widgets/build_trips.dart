@@ -5,16 +5,18 @@ import 'package:travellio/app/screens/home/home_controller.dart';
 import '../utils/app_colors.dart';
 
 Widget buildTrips(double cardWidth) {
+
   HomeController controller = Get.put(HomeController());
   return ListView.builder(
     scrollDirection: Axis.horizontal,
     itemCount: 6,
     itemBuilder: (BuildContext context, index) {
+      bool isFirstTile = index == 0;
+
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
         child: GestureDetector(
-          onTap: () {
-          },
+          onTap: () {},
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -22,18 +24,40 @@ Widget buildTrips(double cardWidth) {
             ),
             child: Column(
               children: [
-                Container(
-                  width: 175,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                          controller.imageURL[index],
-                        ),
-                        fit: BoxFit.fill),
-                    borderRadius: BorderRadius.circular(15),
+                Stack(alignment: Alignment.topCenter, children: [
+                  Container(
+                    width: 175,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(
+                            controller.imageURL[index],
+                          ),
+                          fit: BoxFit.fill),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                   ),
-                ),
+                  if (isFirstTile)
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal:2),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      width: 175,
+                      decoration: BoxDecoration(
+                        color: AppColor.weirdBlue,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Featured Trip',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'inter'
+                          ),
+                        ),
+                      ),
+                    ),
+                ]),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(

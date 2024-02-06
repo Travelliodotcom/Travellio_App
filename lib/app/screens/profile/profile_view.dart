@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travellio/app/screens/profile/profile_controller.dart';
+import '../../routes/app_pages.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/menu_tile.dart';
 
@@ -29,11 +30,10 @@ class ProfileView extends GetView<ProfileController> {
       extendBody: true,
       backgroundColor: AppColor.pageColor,
       body: ListView(
-        physics: const NeverScrollableScrollPhysics(),
+        // physics: const NeverScrollableScrollPhysics(),
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(40, 0, 40, 20),
-            // margin: EdgeInsets.only(top: screenHeight * 0.02),
+            padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: Image.asset(
               "assets/images/profile_pic_placeholder.png",
               height: 250,
@@ -65,6 +65,17 @@ class ProfileView extends GetView<ProfileController> {
           Column(
             children: [
               MenuTile(
+                  title: "View Profile",
+                  icon: Icon(
+                    Icons.view_carousel,
+                    color: AppColor.locIconColor,
+                    weight: 40,
+                  ),
+                  onTap: () => Get.toNamed(Routes.PROFILEINFO)),
+                  const SizedBox(
+                height: 10,
+              ),
+              MenuTile(
                   title: "Edit Profile",
                   icon: Icon(
                     Icons.edit,
@@ -94,6 +105,9 @@ class ProfileView extends GetView<ProfileController> {
                     weight: 40,
                   ),
                   onTap: () => controller.logout()),
+                   const SizedBox(
+                height: 10,
+              ),
             ],
           )
         ],

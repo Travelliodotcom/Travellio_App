@@ -17,6 +17,8 @@ abstract class Routes {
   static const GENERATOR = _Paths.GENERATOR;
   static const CHAT = _Paths.CHAT;
   static const SWIPE = _Paths.SWIPE;
+  static const PROFILEINFO = _Paths.PROFILEINFO;
+
   
 }
 
@@ -33,4 +35,5 @@ abstract class _Paths {
   static const GENERATOR = '/generator';
   static const CHAT = '/chat';
   static const SWIPE = '/swipe';
+  static const PROFILEINFO = '/profileinfo';
 }

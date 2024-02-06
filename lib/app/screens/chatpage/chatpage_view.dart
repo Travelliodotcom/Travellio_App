@@ -21,11 +21,12 @@ class Chatpage extends GetView {
           // ),
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
-            child: GestureDetector(onTap: (){},child: Image.asset("assets/images/newchaticon.png")),
+            child: GestureDetector(
+                onTap: () {},
+                child: Image.asset("assets/images/newchaticon.png")),
           )
         ],
         centerTitle: true,
-        
         elevation: 0,
         backgroundColor: AppColor.pageColor,
         title: const Text(
@@ -43,9 +44,8 @@ class Chatpage extends GetView {
               child: SizedBox(
                 width: screenWidth * 0.9,
                 child: TextField(
-                  
                   decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
+                      focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: AppColor.botomNavBarItem.withOpacity(0.5)),
                           borderRadius: BorderRadius.circular(30)),
@@ -63,14 +63,11 @@ class Chatpage extends GetView {
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide.none
-                          )
-                          ),
+                          borderSide: BorderSide.none)),
                 ),
               ),
             ),
           ),
-
           Obx(() => Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Container(
@@ -84,9 +81,7 @@ class Chatpage extends GetView {
                     indicatorSize: TabBarIndicatorSize.tab,
                     labelColor: Colors.white,
                     indicator: ShapeDecoration(
-
                       shape: RoundedRectangleBorder(
-                        
                         borderRadius: BorderRadius.only(
                           topLeft: tabController.tabIndex.value == 0
                               ? const Radius.circular(10)
@@ -105,7 +100,6 @@ class Chatpage extends GetView {
                   ),
                 ),
               )),
-
           Expanded(
             child: TabBarView(
               controller: tabController.controller,
@@ -114,17 +108,42 @@ class Chatpage extends GetView {
                   physics: const BouncingScrollPhysics(),
                   children: [
                     const chatContainer(
-                        name: "Jane",
-                        message: "Chingchong",
-                        photo: "assets/images/profile_pic_placeholder.png",color: Colors.white,),
-                    const chatContainer(name: "Nego", message: "Meet me in prison", photo: "assets/images/Ellipse 6.png",color: Colors.white,),
-                    chatContainer(name: "Woman", message: "Bj vs Hj?", photo: "assets/images/negow.png",color: AppColor.chatGreen,),
-                    const chatContainer(name: "Tommy", message: "moye moye", photo: "assets/images/tommy.png", color: Colors.white),
-                    const chatContainer(name: "Alibhoi", message: "khuda hafeez", photo: "assets/images/ali.png", color: Colors.white),
-                    const chatContainer(name: "Eshu", message: "Singer-Guitarist", photo: "assets/images/meta.png", color: Colors.white)
+                      name: "Jane",
+                      message: "Chingchong",
+                      photo: "assets/images/profile_pic_placeholder.png",
+                      color: Colors.white,
+                    ),
+                    const chatContainer(
+                      name: "Nego",
+                      message: "Meet me in prison",
+                      photo: "assets/images/Ellipse 6.png",
+                      color: Colors.white,
+                    ),
+                    chatContainer(
+                      name: "Woman",
+                      message: "Bj vs Hj?",
+                      photo: "assets/images/negow.png",
+                      color: AppColor.chatGreen,
+                    ),
+                    const chatContainer(
+                        name: "Tommy",
+                        message: "moye moye",
+                        photo: "assets/images/tommy.png",
+                        color: Colors.white),
+                    const chatContainer(
+                        name: "Alibhoi",
+                        message: "khuda hafeez",
+                        photo: "assets/images/ali.png",
+                        color: Colors.white),
+                    const chatContainer(
+                        name: "Eshu",
+                        message: "Singer-Guitarist",
+                        photo: "assets/images/meta.png",
+                        color: Colors.white)
                   ],
                 ),
-                const Center(child: Text("NO GROUPS CREATED YET CUZ UR A LONER")),
+                const Center(
+                    child: Text("NO GROUPS CREATED YET CUZ UR A LONER")),
               ],
             ),
           ),

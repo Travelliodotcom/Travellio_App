@@ -12,20 +12,7 @@
           "package_name": "com.example.travellio"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "272487133769-m6hinaqboop11mk1ol3hnv4mhu1dmne5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.travellio",
-            "certificate_hash": "858ee822aab96bb4f255bbf9f4d54ebd4d19c887"
-          }
-        },
-        {
-          "client_id": "272487133769-1s4scoijh0ut0t6n2v2papmvjfft5o14.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyDfhXKH2Lzak4_ivBC01E7phal-XGpROx8"
@@ -33,19 +20,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "272487133769-1s4scoijh0ut0t6n2v2papmvjfft5o14.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "272487133769-fdnaqql5krb6gt23q1gha11nstco6cbv.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.travellio"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

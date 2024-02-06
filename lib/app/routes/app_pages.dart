@@ -9,6 +9,8 @@ import 'package:travellio/app/screens/host_trip/host_trip_view.dart';
 import 'package:travellio/app/screens/login/login_view.dart';
 import 'package:travellio/app/screens/profile/profile_binding.dart';
 import 'package:travellio/app/screens/profile/profile_view.dart';
+import 'package:travellio/app/screens/profile_info/profileInfo_binding.dart';
+import 'package:travellio/app/screens/profile_info/profileInfo_view.dart';
 import 'package:travellio/app/screens/saved_trips/saved_trips_view.dart';
 import 'package:travellio/app/screens/sign_up/sign_up_binding.dart';
 import 'package:travellio/app/screens/sign_up/sign_up_view.dart';
@@ -30,10 +32,8 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      // page: () => BuildLayout(),
       page: () => MainScreen(),
       binding: HomeBinding(),
-      // transition: Transition.zoom
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -42,13 +42,11 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SIGNUP,
-      // page: () => BuildLayout(),
       page: () => const SignUpView(),
       binding: SignUpBinding(),
     ),
     GetPage(
       name: _Paths.SAVEDTRIPS,
-      // page: () => BuildLayout(),
       page: () => const SavedTripsView(),
       binding: SavedTripsBinding(),
     ),
@@ -61,11 +59,10 @@ class AppPages {
       name: _Paths.GENERATOR,
       page: () => ai_generator_view(),
       binding: ai_generator_binding(),
-      // transition: Transition.zoom
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () => ProfileView(),
+      page: () => const ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(
@@ -77,6 +74,11 @@ class AppPages {
       name: _Paths.SWIPE,
       page: () => swipeView(),
       binding: swipeBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILEINFO,
+      page: () => const profileInfoView(),
+      binding: profileInfoBinding(),
     ),
    
   ];

@@ -23,7 +23,8 @@ class swipeView extends GetView<swipeController> {
           centerTitle: true,
           title: const Text(
             "Find a Match",
-            style: TextStyle(color: Colors.black,fontFamily: "Raleway",fontSize: 30),
+            style: TextStyle(
+                color: Colors.black, fontFamily: "Raleway", fontSize: 30),
           ),
           elevation: 0,
           backgroundColor: Colors.transparent,

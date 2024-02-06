@@ -7,12 +7,13 @@ class CardWidget extends StatelessWidget {
   final String imageUrl;
   final String name;
   final int age;
+  final VoidCallback onTap;
 
   const CardWidget({
     required this.imageUrl,
     required this.name,
     required this.age,
-    Key? key,
+    Key? key, required this.onTap,
   }) : super(key: key);
 
   @override
@@ -25,18 +26,18 @@ class CardWidget extends StatelessWidget {
       width: screenWidth * 0.85,
       height: screenHeight * 0.7,
       decoration: BoxDecoration(
-        border: Border.all(color: AppColor.weirdBlue,width: 5),
+        border: Border.all(color: AppColor.weirdBlue, width: 5),
         borderRadius: BorderRadius.circular(16.0),
         color: Colors.white,
       ),
       child: Column(
         children: [
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 '$name, ',
-                style:  const TextStyle(
+                style: const TextStyle(
                   fontSize: 30.0,
                   fontFamily: "Raleway",
                   fontWeight: FontWeight.w800,
@@ -69,29 +70,37 @@ class CardWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.location_on,color: AppColor.weirdBlue,),
-              Text("Vadodara",style: TextStyle(
-                fontFamily: "Raleway",
-                //fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),),
+              Icon(
+                Icons.location_on,
+                color: AppColor.weirdBlue,
+              ),
+              Text(
+                "Vadodara",
+                style: TextStyle(
+                  fontFamily: "Raleway",
+                  //fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
             ],
           ),
-          Text("Trips Completed : 26",style:TextStyle(
-                fontFamily: "Raleway",
-                //fontWeight: FontWeight.bold,
-                fontSize: 13,
-                color:AppColor.accentGrey,
-              ),),
-
-          Text("About",style: TextStyle(
-                fontFamily: "Raleway",
-                fontWeight: FontWeight.bold,
-                fontSize: 23,
-              ),),
-         
-          
-          
+          Text(
+            "Trips Completed : 26",
+            style: TextStyle(
+              fontFamily: "Raleway",
+              //fontWeight: FontWeight.bold,
+              fontSize: 13,
+              color: AppColor.accentGrey,
+            ),
+          ),
+          Text(
+            "About",
+            style: TextStyle(
+              fontFamily: "Raleway",
+              fontWeight: FontWeight.bold,
+              fontSize: 23,
+            ),
+          ),
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Center(
@@ -106,24 +115,37 @@ class CardWidget extends StatelessWidget {
                 ),
               ),
             ),
-            
           ),
-          
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SwipePill(text: "Drinks", icon: Icons.local_drink, isSelected: false, onTap: (){}),
-              SwipePill(text: "Oceans", icon: Icons.water, isSelected: false, onTap: (){}),
+              SwipePill(
+                  text: "Drinks",
+                  icon: Icons.local_drink,
+                  isSelected: false,
+                  onTap: () {}),
+              SwipePill(
+                  text: "Oceans",
+                  icon: Icons.water,
+                  isSelected: false,
+                  onTap: () {}),
             ],
           ),
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SwipePill(text: "Forests", icon: CupertinoIcons.tree, isSelected: false, onTap: (){}),
-              SwipePill(text: "Music", icon: Icons.play_arrow, isSelected: false, onTap: (){}),
+              SwipePill(
+                  text: "Forests",
+                  icon: CupertinoIcons.tree,
+                  isSelected: false,
+                  onTap: () {}),
+              SwipePill(
+                  text: "Music",
+                  icon: Icons.play_arrow,
+                  isSelected: false,
+                  onTap: () {}),
             ],
           ),
-          
         ],
       ),
     );
