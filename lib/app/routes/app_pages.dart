@@ -15,7 +15,8 @@ import 'package:travellio/app/screens/saved_trips/saved_trips_view.dart';
 import 'package:travellio/app/screens/sign_up/sign_up_binding.dart';
 import 'package:travellio/app/screens/sign_up/sign_up_view.dart';
 import 'package:travellio/app/screens/swipe/swipe_view.dart';
-import 'package:travellio/app/utils/main_screen.dart';
+import 'package:travellio/app/utils/buildLayout/buildLayout_view.dart';
+// import 'package:travellio/app/utils/main_screen.dart';
 import '../screens/home/home_binding.dart';
 import '../screens/host_trip/host_trip_binding.dart';
 import '../screens/login/login_binding.dart';
@@ -32,8 +33,9 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => MainScreen(),
+      page: () => BuildLayout(),
       binding: HomeBinding(),
+      transition: Transition.fadeIn
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -42,7 +44,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SIGNUP,
-      page: () => const SignUpView(),
+      page: () => SignUpView(),
       binding: SignUpBinding(),
     ),
     GetPage(
@@ -62,7 +64,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () => const ProfileView(),
+      page: () => ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(

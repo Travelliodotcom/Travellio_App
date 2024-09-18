@@ -14,4 +14,5 @@ class AppColor {
   static Color hostPageText = const Color(0xFF4F4F4F);
   static Color chatGreen = const Color.fromARGB(255, 229, 252, 255);
   static Color appYellow = const Color(0xFFFFC83C);
+  static Color earthBlue = const Color(0x008FA0FF);
 }

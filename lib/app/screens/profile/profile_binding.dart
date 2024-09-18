@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../utils/buildLayout/buildLayout_controller.dart';
 import 'profile_controller.dart';
 
 class ProfileBinding extends Bindings {
@@ -7,6 +8,9 @@ class ProfileBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<ProfileController>(
       () => ProfileController(),
+    );
+    Get.lazyPut<BuildLayoutController>(
+      () => BuildLayoutController(),
     );
 
   }

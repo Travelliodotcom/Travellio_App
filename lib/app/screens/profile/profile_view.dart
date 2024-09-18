@@ -6,7 +6,9 @@ import '../../utils/app_colors.dart';
 import '../../widgets/menu_tile.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  const ProfileView({super.key});
+  final ProfileController _profileController = Get.put(ProfileController());
+
+  ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +106,7 @@ class ProfileView extends GetView<ProfileController> {
                     color: AppColor.locIconColor,
                     weight: 40,
                   ),
-                  onTap: () => controller.logout()),
+                  onTap: () => _profileController.logout()),
                    const SizedBox(
                 height: 10,
               ),

@@ -19,7 +19,7 @@ class LoginView extends GetView<LoginController> {
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColor.weirdBlue,
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const RangeMaintainingScrollPhysics(),
         child: Stack(
           children: [
             Positioned(
@@ -139,7 +139,7 @@ class LoginView extends GetView<LoginController> {
                                     border: InputBorder.none,
                                     hintText: "***********",
                                     hintStyle: TextStyle(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'raleway',
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                       color: AppColor.weirdBlue,

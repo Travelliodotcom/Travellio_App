@@ -32,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
       body: Obx(
         () => pages[pageIndexController.currentIndex.value],
       ),
-      bottomNavigationBar: const bottomNavBar(),
+      // bottomNavigationBar: const bottomNavBar(),
     );
   }
 }

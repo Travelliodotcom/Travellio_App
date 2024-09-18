@@ -1,23 +1,60 @@
-  // ignore_for_file: unused_local_variable
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 
-  import 'package:firebase_auth/firebase_auth.dart';
-  import 'package:flutter/widgets.dart';
-  import 'package:get/get.dart';
+class SignUpController extends GetxController {
+  RxBool obscureText = true.obs;
+  RxBool emailIsValid = false.obs;
+  RxBool passwordIsValid = false.obs;
 
-  class SignUpController extends GetxController {
-    var emailc = TextEditingController();
-    var passc = TextEditingController();
-    var userc = TextEditingController();
-    var auth = FirebaseAuth.instance;
-    Future signupUser() async {
-      if (emailc.text.isNotEmpty && passc.text.isNotEmpty) {
-        try {
-          var credential = await auth.createUserWithEmailAndPassword(
-              email: emailc.text.trim(), password: passc.text);
-          Get.offAllNamed('/login');
-        } catch (e) {
-          if (e is FirebaseAuthException) print(e.code);
-        }
-      }
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void isEmailValid(String uname) {
+    final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
+    emailIsValid.value = emailRegex.hasMatch(uname);
+  }
+
+  // void isPasswordValid(String pwd) {
+  //   final pwdRegex = RegExp(r'[A-Za-z0-9@#$%&*._]{5,20}');
+  //   passwordIsValid.value = pwdRegex.hasMatch(pwd);
+  // }
+
+  Future<void> createAccount(String email, String password) async {
+    try {
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      Get.snackbar(
+        'Success',
+        'Account Created',
+        snackPosition: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 2),
+      );
+
+      Get.toNamed('/login');
+
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 2),
+      );
     }
   }
+
+  bool success() {
+    if (emailIsValid.isTrue) {
+      return true;
+    } else {
+      Get.snackbar(
+        'Error',
+        'Invalid username or password',
+        snackPosition: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 2),
+      );
+      return false;
+    }
+  }
+}
